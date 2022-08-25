@@ -14,4 +14,4 @@ app.use(express.json());
 
 routes(app)
 
-app.listen(process.env.DEV_PORT, () => console.log("Server started on port 3333"));
+app.listen(process.env.DEV_PORT, () => console.log("Server started on DEV_PORT"));

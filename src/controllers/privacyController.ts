@@ -1,18 +1,16 @@
 import { Request, Response, response } from "express";
-import { notificationConfig } from "../models/notification";
+import { privacyConfig } from "../models/privacy";
 
-class notificationController {
+class privacyController {
 
-    static findUserNotification = (request, response: Response) => {
-        notificationConfig.findOne((err, sms) => {
-            return response.json(sms);
+    static findUserPrivacy = (request, response: Response) => {
+        privacyConfig.findOne((error, privacy) => {
+            return response.json(privacy);
         })
     }
 
-    static creatNotificationeObject = (request: Request, response: Response) => {
-        console.log(request.body)
-
-        const notification = new notificationConfig(request.body);
+    static creatPrivacyObject = (request: Request, response: Response) => {
+        const notification = new privacyConfig(request.body);
 
         notification.save((error) => {
             if(!error) {
@@ -24,10 +22,10 @@ class notificationController {
         })
     }
 
-    static handleNotificationState = (request: Request, response: Response) => {
+    static handlePrivacyState = (request: Request, response: Response) => {
         const id = request.params.id;
 
-        notificationConfig.findByIdAndUpdate(id, {
+        privacyConfig.findByIdAndUpdate(id, {
             $set: request.body
         }, (error) => {
           if(!error) {
@@ -42,4 +40,4 @@ class notificationController {
 
 }
 
-export { notificationController };
+export { privacyController };

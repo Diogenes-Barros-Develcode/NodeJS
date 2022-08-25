@@ -1,5 +1,5 @@
 import express from "express";
-import notificationRoutes from "./notification.routes";
+import privacyRoutes from "./privacy.routes";
 
 const routes = (app) => {
     app.route('/').get((req, res) => {
@@ -10,7 +10,7 @@ const routes = (app) => {
 
     app.use(
         express.json(),
-        notificationRoutes
+        privacyRoutes
     )
 }
 
